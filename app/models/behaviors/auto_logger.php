@@ -75,7 +75,7 @@ class AutoLoggerBehavior extends ModelBehavior
 		{
 			foreach($old_value[$Model->alias] as $k => $v)
 			{
-				if(!in_array($k, $diff_keys) || in_array($k, $reserved_keys))
+				if($k != $Model->primaryKey && (!in_array($k, $diff_keys) || in_array($k, $reserved_keys)))
 				{
 					unset($old_value[$Model->alias][$k]);
 				}
@@ -85,7 +85,7 @@ class AutoLoggerBehavior extends ModelBehavior
 		{
 			foreach($new_value[$Model->alias] as $k => $v)
 			{
-				if(!in_array($k, $diff_keys) || in_array($k, $reserved_keys))
+				if($k != $Model->primaryKey && (!in_array($k, $diff_keys) || in_array($k, $reserved_keys)))
 				{
 					unset($new_value[$Model->alias][$k]);
 				}
